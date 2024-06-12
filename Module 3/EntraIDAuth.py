@@ -1,6 +1,7 @@
 import os
 from openai import AzureOpenAI
 from azure.identity import DefaultAzureCredential, get_bearer_token_provider
+import json
 
 endpoint = os.environ["AZURE_OPENAI_ENDPOINT"]
 deployment = os.environ["CHAT_COMPLETIONS_DEPLOYMENT_NAME"]
@@ -27,3 +28,7 @@ completion = client.chat.completions.create(
 #Store and output the completion message
 completion_message = completion.choices[0].message.content
 print("> " + completion_message + "\n")
+print("Output tokens: " + str(completion.usage.completion_tokens) + "\n\n")
+
+#View the raw response
+print(completion)

@@ -1,7 +1,18 @@
+#Viewing details
+az cognitiveservices account show `
+   -g WUS3-AI -n SavTech-WUS3-OpenAI `
+   --query "properties.endpoint"
+
+az cognitiveservices account keys list `
+   -g WUS3-AI -n SavTech-WUS3-OpenAI `
+   --query "key1"
+
+#Viewing deployed models
 az cognitiveservices account deployment list `
     -g WUS3-AI -n SavTech-WUS3-OpenAI `
     --output table
 
+#Deploying a model
 az cognitiveservices account deployment create `
    -g WUS3-AI `
    -n SavTech-WUS3-OpenAI `
@@ -12,6 +23,7 @@ az cognitiveservices account deployment create `
    --sku "Standard" `
    --sku-capacity 1
 
+#Deleting a model deployment
 az cognitiveservices account deployment delete `
    -g WUS3-AI `
    -n SavTech-WUS3-OpenAI `

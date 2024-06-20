@@ -8,7 +8,7 @@ $token = Get-AzAccessToken -ResourceUrl "https://cognitiveservices.azure.com/" #
 #Construct authentication header
 $headers = @{
     'Content-Type'='application/json'
-    'api-key'='Bearer ' + $token.Token
+    'Authorization'='Bearer ' + $token.Token
 }
 
 $messages = @{
@@ -26,5 +26,9 @@ $body = @{
 } | ConvertTo-Json
 
 $resp = Invoke-RestMethod -Verbose -Uri $ai_url -Method Post -Header $headers -Body $body
+#Raw response
 $resp
+#Pretty JSON format
+$resp | convertto-json -Depth 5
+#Just the inference response
 $resp.choices[0].message.content

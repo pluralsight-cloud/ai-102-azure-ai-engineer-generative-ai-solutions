@@ -1,7 +1,6 @@
 import os, requests
 from openai import AzureOpenAI
 from azure.identity import DefaultAzureCredential, get_bearer_token_provider
-import json
 
 endpoint = os.environ["AZURE_OPENAI_ENDPOINT"]
 deployment = os.environ["CHAT_COMPLETIONS_DEPLOYMENT_NAME"]
